@@ -18,6 +18,9 @@ PROJETO BACK-END
 ## Instalando o Prisma como dependência de desenvolvimento
 `npm install prisma --save-dev`
 
+## instalando o prisma client
+`npm install prisma-client
+
 ## Inicializando o Prisma com conector para MongoDB
 `npx prisma init --datasource-provider mongodb`
 * Instale a extensão Prisma no Visual Studio Code
