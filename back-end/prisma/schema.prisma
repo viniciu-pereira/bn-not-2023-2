@@ -33,7 +33,7 @@ enum Uf {
   SP
 }
 
-enum DiaSemana{
+enum DiaSemana {
   DOM
   SEG
   TER
@@ -44,40 +44,40 @@ enum DiaSemana{
 }
 
 model Curso {
-  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
   nome            String
-  nivel           Nivel   @default(BASICO)
+  nivel           Nivel       @default(BASICO)
   area            Area
   valorTotal      Float
-  Turmas          Turma[]
+  turmas          Turma[]
 }
 
 model Professor {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
   nome            String
   formacao        String
-  cpf             String   @unique // Não pode repetir CPF na coleção
+  cpf             String      @unique // Não pode repetir CPF na coleção
   dataNascimento  DateTime
-  email           String   @unique // Não pode repetir email na coleção
+  email           String      @unique // Não pode repetir email na coleção
   telefone        String
   turmas          Turma[]
 }
 
 model Aluno {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
   nome            String
-  cpf             String       @unique
+  cpf             String      @unique
   dataNascimento  DateTime
   logradouro      String
   numImovel       String
-  complemento     String?      // Campo opcional
+  complemento     String?     // Campo opcional
   bairro          String
   municipio       String
   uf              Uf
-  email           String       @unique
+  email           String      @unique
   telefone        String
-  turmaIds        String[]     @db.ObjectId
-  turmas          Turma[]      @relation(fields: [turmaIds], references: [id])
+  turmaIds        String[]    @db.ObjectId
+  turmas          Turma[]     @relation(fields: [turmaIds], references: [id])
 }
 
 model Turma {
@@ -89,8 +89,7 @@ model Turma {
   diaSemana       String
   horaInicial     Int
   horaFinal       Int
-  ativo           Boolean     @default(true)
+  ativa           Boolean     @default(true)
   alunoIds        String[]    @db.ObjectId
   alunos          Aluno[]     @relation(fields: [alunoIds], references: [id])
 }
-
